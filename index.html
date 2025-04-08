@@ -86,6 +86,11 @@
             from, to { border-color: transparent }
             50% { border-color: #00ff9d; }
         }
+        
+        .multiplayer-highlight {
+            background: linear-gradient(135deg, rgba(0, 255, 157, 0.1) 0%, rgba(0, 201, 255, 0.1) 100%);
+            border-left: 4px solid #00ff9d;
+        }
     </style>
 </head>
 <body class="bg-gray-900 text-gray-100">
@@ -101,6 +106,7 @@
                         <div class="ml-10 flex items-baseline space-x-4">
                             <a href="#about" class="px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-800 hover:text-cyan-300 transition">ゲーム概要</a>
                             <a href="#features" class="px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-800 hover:text-cyan-300 transition">特徴</a>
+                            <a href="#multiplayer" class="px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-800 hover:text-cyan-300 transition">マルチプレイ</a>
                             <a href="#gameplay" class="px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-800 hover:text-cyan-300 transition">ゲームプレイ</a>
                             <a href="#community" class="px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-800 hover:text-cyan-300 transition">コミュニティ</a>
                         </div>
@@ -228,11 +234,88 @@
                     </div>
                 </div>
                 <div class="relative">
-                    <img src="https://img.gamewith.jp/gamedb/gameimages/11278/39dc0e2a74ebc5b074ed21b79fac0ba9.png" alt="Unturned gameplay" class="rounded-lg shadow-xl w-full neon-border">
+                    <img src="https://stat.ameba.jp/user_images/20170721/13/bonchobi000/a3/cb/j/o1920108013987243077.jpg" alt="Unturned gameplay" class="rounded-lg shadow-xl w-full neon-border">
                     <div class="absolute -bottom-5 -right-5 bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-4 py-2 rounded-lg shadow-lg">
                         <i class="fas fa-play mr-2"></i> アクティブな開発
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- マルチプレイセクション -->
+    <section id="multiplayer" class="py-20 bg-gray-900 pixel-grid">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-cyan-300 cyber-glitch">マルチプレイの魅力</h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-cyan-500 to-blue-600 mx-auto mb-6"></div>
+                <p class="max-w-3xl mx-auto text-lg">友達と協力したり、敵対したり、UNTURNEDのマルチプレイは無限の可能性を提供します。</p>
+            </div>
+            
+            <div class="multiplayer-highlight p-8 rounded-lg mb-12">
+                <div class="flex flex-col md:flex-row items-center gap-8">
+                    <div class="flex-1">
+                        <h3 class="text-2xl font-bold mb-4 text-cyan-300">協力プレイでより深い体験を</h3>
+                        <p class="text-gray-300 mb-4">UNTURNEDの真の魅力は、最大24人までのプレイヤーと共に遊べるマルチプレイモードにあります。友達とチームを組んで巨大な基地を建設したり、危険なダンジョンに挑戦したり、ゾンビの群れから生き延びる協力プレイが楽しめます。</p>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <i class="fas fa-users text-cyan-300 mt-1 mr-3"></i>
+                                <span>最大24人同時プレイ可能なサーバー</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-shield-alt text-cyan-300 mt-1 mr-3"></i>
+                                <span>チームプレイに最適なクランシステム</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-comments text-cyan-300 mt-1 mr-3"></i>
+                                <span>ボイスチャットとテキストチャットの両方をサポート</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="flex-1">
+                        <img src="https://img.gamewith.jp/gamedb/gameimages/11278/39dc0e2a74ebc5b074ed21b79fac0ba9.png" alt="マルチプレイ" class="rounded-lg shadow-xl w-full neon-border">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-gray-800 p-6 rounded-lg shadow-lg neon-border">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-cyan-500 p-3 rounded-full mr-4">
+                            <i class="fas fa-user-friends text-white text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold">協力サバイバル</h3>
+                    </div>
+                    <p class="text-gray-300 mb-4">友達と協力して資源を集め、基地を建設し、ゾンビの脅威から身を守りましょう。役割分担が成功の鍵です。</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-gray-700 px-3 py-1 rounded-full text-sm">資源収集</span>
+                        <span class="bg-gray-700 px-3 py-1 rounded-full text-sm">基地防衛</span>
+                        <span class="bg-gray-700 px-3 py-1 rounded-full text-sm">役割分担</span>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-800 p-6 rounded-lg shadow-lg neon-border">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-red-500 p-3 rounded-full mr-4">
+                            <i class="fas fa-crosshairs text-white text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold">PvPバトル</h3>
+                    </div>
+                    <p class="text-gray-300 mb-4">他のプレイヤーと戦い、彼らの資源を奪い取りましょう。戦略とチームワークが勝利をもたらします。</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-gray-700 px-3 py-1 rounded-full text-sm">戦術</span>
+                        <span class="bg-gray-700 px-3 py-1 rounded-full text-sm">襲撃</span>
+                        <span class="bg-gray-700 px-3 py-1 rounded-full text-sm">戦利品</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center">
+                <h3 class="text-2xl font-bold mb-4 text-cyan-300">カスタムサーバーで独自のルールを</h3>
+                <p class="text-gray-300 max-w-3xl mx-auto mb-6">UNTURNEDでは自分でサーバーを立てて独自のルールを設定できます。PvE専用サーバー、ハードコアサバイバル、ロールプレイサーバーなど、様々なスタイルのゲームプレイが可能です。</p>
+                <a href="https://store.steampowered.com/app/304930/Unturned/" target="_blank" class="inline-block bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 px-6 py-3 rounded-md text-lg font-medium transition shadow-lg shadow-cyan-500/20">
+                    <i class="fas fa-server mr-2"></i> サーバーを立てる方法を見る
+                </a>
             </div>
         </div>
     </section>
@@ -271,5 +354,110 @@
                     <h3 class="text-xl font-bold mb-2">プレイヤー対戦</h3>
                     <p class="text-gray-300 mb-4">指定されたPvPゾーンやサーバーで他のサバイバーと激しい戦闘を行います。</p>
                     <div class="flex flex-wrap gap-2">
-                       
+                        <span class="bg-gray-700 px-3 py-1 rounded-full text-sm">戦術</span>
+                        <span class="bg-gray-700 px-3 py-1 rounded-full text-sm">武器</span>
+                        <span class="bg-gray-700 px-3 py-1 rounded-full text-sm">戦略</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- コミュニティセクション -->
+    <section id="community" class="py-20 bg-gray-900 relative overflow-hidden">
+        <div class="absolute inset-0 bg-[url('https://i.imgur.com/X3ZQZ2f.png')] opacity-5 mix-blend-overlay"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-cyan-300 cyber-glitch">活発なコミュニティ</h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-cyan-500 to-blue-600 mx-auto mb-6"></div>
+                <p class="max-w-3xl mx-auto text-lg">世界中のプレイヤーとつながり、UNTURNEDの体験を共有しましょう。</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-gray-800 p-6 rounded-lg shadow-lg neon-border">
+                    <div class="text-cyan-300 text-4xl mb-4">
+                        <i class="fab fa-discord"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Discordコミュニティ</h3>
+                    <p class="text-gray-300 mb-4">公式Discordサーバーで最新情報を入手し、他のプレイヤーと交流しましょう。</p>
+                    <a href="#" class="text-cyan-300 hover:text-cyan-200 font-medium inline-flex items-center">
+                        参加する <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+                <div class="bg-gray-800 p-6 rounded-lg shadow-lg neon-border">
+                    <div class="text-cyan-300 text-4xl mb-4">
+                        <i class="fab fa-reddit"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Redditコミュニティ</h3>
+                    <p class="text-gray-300 mb-4">活発なRedditコミュニティでヒントやストーリーを共有しましょう。</p>
+                    <a href="#" class="text-cyan-300 hover:text-cyan-200 font-medium inline-flex items-center">
+                        参加する <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+                <div class="bg-gray-800 p-6 rounded-lg shadow-lg neon-border">
+                    <div class="text-cyan-300 text-4xl mb-4">
+                        <i class="fab fa-steam"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Steamコミュニティ</h3>
+                    <p class="text-gray-300 mb-4">Steamのディスカッションフォーラムで質問したり、MODを探したりしましょう。</p>
+                    <a href="#" class="text-cyan-300 hover:text-cyan-200 font-medium inline-flex items-center">
+                        参加する <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- フッター -->
+    <footer class="bg-gray-900 border-t border-gray-800 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-lg font-bold text-cyan-300 mb-4"><i class="fas fa-skull mr-2"></i>UNTURNED</h3>
+                    <p class="text-gray-400">無料プレイ可能なマルチプレイヤーサバイバルゲーム</p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4">リンク</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#about" class="text-gray-400 hover:text-cyan-300 transition">ゲーム概要</a></li>
+                        <li><a href="#features" class="text-gray-400 hover:text-cyan-300 transition">特徴</a></li>
+                        <li><a href="#multiplayer" class="text-gray-400 hover:text-cyan-300 transition">マルチプレイ</a></li>
+                        <li><a href="#gameplay" class="text-gray-400 hover:text-cyan-300 transition">ゲームプレイ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4">コミュニティ</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-cyan-300 transition">Discord</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-cyan-300 transition">Reddit</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-cyan-300 transition">Steam</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-cyan-300 transition">Twitter</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4">ダウンロード</h3>
+                    <a href="https://store.steampowered.com/app/304930/Unturned/" target="_blank" class="inline-block bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 px-4 py-2 rounded-md text-sm font-medium transition shadow-lg shadow-cyan-500/20">
+                        <i class="fab fa-steam mr-2"></i> Steamでプレイ
+                    </a>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-500 text-sm">© 2024 Unturned. All rights reserved.</p>
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a href="#" class="text-gray-400 hover:text-cyan-300 transition">
+                        <i class="fab fa-twitter text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-cyan-300 transition">
+                        <i class="fab fa-facebook text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-cyan-300 transition">
+                        <i class="fab fa-instagram text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-cyan-300 transition">
+                        <i class="fab fa-youtube text-xl"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+<p style="border-radius: 8px; text-align: center; font-size: 12px; color: #fff; margin-top: 16px;position: fixed; left: 8px; bottom: 8px; z-index: 10; background: rgba(0, 0, 0, 0.8); padding: 4px 8px;">Made with <img src="https://enzostvs-deepsite.hf.space/logo.svg" alt="DeepSite Logo" style="width: 16px; height: 16px; vertical-align: middle;display:inline-block;margin-right:3px;filter:brightness(0) invert(1);"><a href="https://enzostvs-deepsite.hf.space" style="color: #fff;text-decoration: underline;" target="_blank" >DeepSite</a> - 🧬 <a href="https://enzostvs-deepsite.hf.space?remix=sassa12345/unturnedsite" style="color: #fff;text-decoration: underline;" target="_blank" >Remix</a></p></body>
 </html>
