@@ -91,6 +91,41 @@
             background: linear-gradient(135deg, rgba(0, 255, 157, 0.1) 0%, rgba(0, 201, 255, 0.1) 100%);
             border-left: 4px solid #00ff9d;
         }
+
+        /* スマホ用追加スタイル */
+        @media (max-width: 640px) {
+            .hero-buttons {
+                flex-direction: column;
+                width: 100%;
+                padding: 0 1rem;
+            }
+            
+            .hero-buttons a {
+                width: 100%;
+                text-align: center;
+                margin-bottom: 0.75rem;
+            }
+            
+            .nav-button {
+                padding: 0.5rem 1rem;
+                font-size: 0.875rem;
+            }
+            
+            .nav-logo {
+                font-size: 1rem;
+            }
+            
+            .mobile-menu {
+                display: flex;
+                flex-direction: column;
+                padding: 1rem;
+            }
+            
+            .mobile-menu a {
+                padding: 0.75rem 0;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+            }
+        }
     </style>
 </head>
 <body class="bg-gray-900 text-gray-100">
@@ -100,7 +135,7 @@
             <div class="flex items-center justify-between h-16">
                 <div class="flex items-center">
                     <div class="flex-shrink-0">
-                        <span class="text-cyan-300 font-bold text-xl tracking-wider"><i class="fas fa-skull mr-2"></i>UNTURNED</span>
+                        <span class="text-cyan-300 font-bold text-xl tracking-wider nav-logo"><i class="fas fa-skull mr-2"></i>UNTURNED</span>
                     </div>
                     <div class="hidden md:block">
                         <div class="ml-10 flex items-baseline space-x-4">
@@ -113,7 +148,7 @@
                     </div>
                 </div>
                 <div>
-                    <a href="https://store.steampowered.com/app/304930/Unturned/" target="_blank" class="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 px-4 py-2 rounded-md text-sm font-medium transition flex items-center shadow-lg shadow-cyan-500/20">
+                    <a href="https://store.steampowered.com/app/304930/Unturned/" target="_blank" class="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 px-4 py-2 rounded-md text-sm font-medium transition flex items-center shadow-lg shadow-cyan-500/20 nav-button">
                         <i class="fab fa-steam mr-2"></i> Steamでプレイ
                     </a>
                 </div>
@@ -125,10 +160,10 @@
     <header class="parallax bg-[url('https://pbs.twimg.com/media/GJMKP3kXoAA8yBw?format=jpg')] h-screen flex items-center justify-center relative overflow-hidden">
         <div class="absolute inset-0 bg-black bg-opacity-70"></div>
         <div class="absolute inset-0 bg-[url('https://i.imgur.com/X3ZQZ2f.png')] opacity-10 mix-blend-overlay"></div>
-        <div class="text-center z-10 px-4">
-            <h1 class="text-5xl md:text-7xl font-bold mb-6 text-cyan-300 typewriter cyber-glitch">世界の終末を生き延びろ</h1>
-            <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto neon-text">無料プレイ可能なマルチプレイヤーサバイバルゲーム</p>
-            <div class="flex flex-col sm:flex-row justify-center gap-4">
+        <div class="text-center z-10 px-4 w-full">
+            <h1 class="text-4xl md:text-7xl font-bold mb-6 text-cyan-300 typewriter cyber-glitch">世界の終末を生き延びろ</h1>
+            <p class="text-lg md:text-2xl mb-8 max-w-3xl mx-auto neon-text">無料プレイ可能なマルチプレイヤーサバイバルゲーム</p>
+            <div class="hero-buttons flex flex-col sm:flex-row justify-center gap-4 max-w-md mx-auto">
                 <a href="#about" class="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 px-6 py-3 rounded-md text-lg font-medium transition shadow-lg shadow-cyan-500/20">詳細を見る</a>
                 <a href="https://store.steampowered.com/app/304930/Unturned/" target="_blank" class="bg-gray-800 hover:bg-gray-700 px-6 py-3 rounded-md text-lg font-medium transition flex items-center justify-center neon-border">
                     <i class="fab fa-steam mr-2"></i> 無料ダウンロード
@@ -156,7 +191,7 @@
                         <i class="fas fa-calendar-alt"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-2">ロングセラー</h3>
-                    <p class="text-gray-300">2014年にリリースされ、無料プレイモデルを維持しながら継続的にアップデートが行われています。</p>
+                    <p class="text-gray-300">2014年にリリースされ、無料プレイモデルを維持ながら継続的にアップデートが行われています。</p>
                 </div>
                 <div class="bg-gray-800 p-6 rounded-lg shadow-lg neon-border">
                     <div class="text-cyan-300 text-4xl mb-4">
@@ -413,7 +448,7 @@
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <div>
                     <h3 class="text-lg font-bold text-cyan-300 mb-4"><i class="fas fa-skull mr-2"></i>UNTURNED</h3>
-                    <p class="text-gray-400">無料プレイ可能なマルチプレイヤーサバイバルゲーム</p>
+                    <p class="text-gray-400">無費プレイ可能なマルチプレイヤーサバイバルゲーム</p>
                 </div>
                 <div>
                     <h3 class="text-lg font-bold mb-4">リンク</h3>
