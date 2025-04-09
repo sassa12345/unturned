@@ -2,15 +2,16 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>UNTURNED - サバイバル・サンドボックスゲーム</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Press+Start+2P&display=swap');
         
         body {
             font-family: 'Noto Sans JP', sans-serif;
+            overflow-x: hidden;
         }
         
         .cyber-glitch {
@@ -94,6 +95,20 @@
 
         /* スマホ用追加スタイル */
         @media (max-width: 640px) {
+            .hero-title {
+                font-size: 2rem;
+                line-height: 1.2;
+                white-space: normal;
+                text-align: center;
+                padding: 0 1rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1rem;
+                white-space: normal;
+                padding: 0 1rem;
+            }
+            
             .hero-buttons {
                 flex-direction: column;
                 width: 100%;
@@ -104,6 +119,8 @@
                 width: 100%;
                 text-align: center;
                 margin-bottom: 0.75rem;
+                font-size: 0.9rem;
+                padding: 0.75rem;
             }
             
             .nav-button {
@@ -125,30 +142,171 @@
                 padding: 0.75rem 0;
                 border-bottom: 1px solid rgba(255,255,255,0.1);
             }
+            
+            .section-padding {
+                padding-top: 3rem;
+                padding-bottom: 3rem;
+            }
+            
+            .game-card {
+                margin-bottom: 1.5rem;
+            }
+        }
+        
+        /* 追加アニメーション */
+        .float {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .rotate {
+            animation: rotate 10s linear infinite;
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .flicker {
+            animation: flicker 3s linear infinite;
+        }
+        
+        @keyframes flicker {
+            0%, 19.999%, 22%, 62.999%, 64%, 64.999%, 70%, 100% {
+                opacity: 0.99;
+                text-shadow: 0 0 10px #00ff9d, 0 0 20px #00ff9d, 0 0 30px #00ff9d;
+            }
+            20%, 21.999%, 63%, 63.999%, 65%, 69.999% {
+                opacity: 0.4;
+                text-shadow: none;
+            }
+        }
+        
+        .scanline {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .scanline::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            background: linear-gradient(to bottom, 
+                transparent 0%, 
+                rgba(0, 255, 157, 0.1) 50%, 
+                transparent 100%);
+            animation: scan 8s linear infinite;
+            pointer-events: none;
+        }
+        
+        @keyframes scan {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100%); }
+        }
+        
+        .glow-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .glow-hover:hover {
+            box-shadow: 0 0 15px rgba(0, 255, 157, 0.5);
+        }
+        
+        .pixel-corners {
+            position: relative;
+        }
+        
+        .pixel-corners::before, .pixel-corners::after {
+            content: '';
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #00ff9d;
+        }
+        
+        .pixel-corners::before {
+            top: -2px;
+            left: -2px;
+        }
+        
+        .pixel-corners::after {
+            bottom: -2px;
+            right: -2px;
+        }
+        
+        .matrix-bg {
+            position: relative;
+        }
+        
+        .matrix-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="1" height="1" x="10" y="10" fill="rgba(0,255,157,0.05)"/><rect width="1" height="1" x="20" y="20" fill="rgba(0,255,157,0.05)"/><rect width="1" height="1" x="30" y="30" fill="rgba(0,255,157,0.05)"/><rect width="1" height="1" x="40" y="40" fill="rgba(0,255,157,0.05)"/><rect width="1" height="1" x="50" y="50" fill="rgba(0,255,157,0.05)"/><rect width="1" height="1" x="60" y="60" fill="rgba(0,255,157,0.05)"/><rect width="1" height="1" x="70" y="70" fill="rgba(0,255,157,0.05)"/><rect width="1" height="1" x="80" y="80" fill="rgba(0,255,157,0.05)"/><rect width="1" height="1" x="90" y="90" fill="rgba(0,255,157,0.05)"/></svg>');
+            opacity: 0.2;
+            pointer-events: none;
+        }
+        
+        .zombie-hand {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M30,10 Q50,30 70,10 L80,20 Q60,40 80,60 L70,70 Q50,50 30,70 L20,60 Q40,40 20,20 Z" fill="rgba(0,255,157,0.3)"/></svg>') no-repeat;
+            animation: zombieFloat 15s linear infinite;
+            pointer-events: none;
+        }
+        
+        @keyframes zombieFloat {
+            0% { transform: translate(0, 0) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.3; }
+            90% { opacity: 0.3; }
+            100% { transform: translate(100vw, -100vh) rotate(360deg); opacity: 0; }
         }
     </style>
 </head>
-<body class="bg-gray-900 text-gray-100">
+<body class="bg-gray-900 text-gray-100 overflow-x-hidden">
     <!-- ナビゲーション -->
-    <nav class="bg-gray-900 bg-opacity-90 fixed w-full z-10 backdrop-blur-md border-b border-gray-800">
+    <nav class="bg-gray-900 bg-opacity-90 fixed w-full z-50 backdrop-blur-md border-b border-gray-800 shadow-lg">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
                 <div class="flex items-center">
                     <div class="flex-shrink-0">
-                        <span class="text-cyan-300 font-bold text-xl tracking-wider nav-logo"><i class="fas fa-skull mr-2"></i>UNTURNED</span>
+                        <span class="text-cyan-300 font-bold text-xl tracking-wider nav-logo flicker"><i class="fas fa-skull mr-2"></i>UNTURNED</span>
                     </div>
                     <div class="hidden md:block">
                         <div class="ml-10 flex items-baseline space-x-4">
-                            <a href="#about" class="px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-800 hover:text-cyan-300 transition">ゲーム概要</a>
-                            <a href="#features" class="px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-800 hover:text-cyan-300 transition">特徴</a>
-                            <a href="#multiplayer" class="px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-800 hover:text-cyan-300 transition">マルチプレイ</a>
-                            <a href="#gameplay" class="px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-800 hover:text-cyan-300 transition">ゲームプレイ</a>
-                            <a href="#community" class="px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-800 hover:text-cyan-300 transition">コミュニティ</a>
+                            <a href="#about" class="px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-800 hover:text-cyan-300 transition glow-hover">ゲーム概要</a>
+                            <a href="#features" class="px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-800 hover:text-cyan-300 transition glow-hover">特徴</a>
+                            <a href="#multiplayer" class="px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-800 hover:text-cyan-300 transition glow-hover">マルチプレイ</a>
+                            <a href="#gameplay" class="px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-800 hover:text-cyan-300 transition glow-hover">ゲームプレイ</a>
+                            <a href="#community" class="px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-800 hover:text-cyan-300 transition glow-hover">コミュニティ</a>
                         </div>
                     </div>
                 </div>
                 <div>
-                    <a href="https://store.steampowered.com/app/304930/Unturned/" target="_blank" class="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 px-4 py-2 rounded-md text-sm font-medium transition flex items-center shadow-lg shadow-cyan-500/20 nav-button">
+                    <a href="https://store.steampowered.com/app/304930/Unturned/" target="_blank" class="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 px-4 py-2 rounded-md text-sm font-medium transition flex items-center shadow-lg shadow-cyan-500/20 nav-button pulse">
                         <i class="fab fa-steam mr-2"></i> Steamでプレイ
                     </a>
                 </div>
@@ -157,51 +315,62 @@
     </nav>
 
     <!-- ヒーローセクション -->
-    <header class="parallax bg-[url('https://pbs.twimg.com/media/GJMKP3kXoAA8yBw?format=jpg')] h-screen flex items-center justify-center relative overflow-hidden">
+    <header class="parallax bg-[url('https://pbs.twimg.com/media/GJMKP3kXoAA8yBw?format=jpg')] h-screen flex items-center justify-center relative overflow-hidden scanline">
         <div class="absolute inset-0 bg-black bg-opacity-70"></div>
         <div class="absolute inset-0 bg-[url('https://i.imgur.com/X3ZQZ2f.png')] opacity-10 mix-blend-overlay"></div>
+        
+        <!-- 追加アニメーション要素 -->
+        <div class="zombie-hand" style="top:20%; left:-100px; animation-delay: 0s;"></div>
+        <div class="zombie-hand" style="top:40%; left:-100px; animation-delay: 5s;"></div>
+        <div class="zombie-hand" style="top:60%; left:-100px; animation-delay: 10s;"></div>
+        
         <div class="text-center z-10 px-4 w-full">
-            <h1 class="text-4xl md:text-7xl font-bold mb-6 text-cyan-300 typewriter cyber-glitch">世界の終末を生き延びろ</h1>
-            <p class="text-lg md:text-2xl mb-8 max-w-3xl mx-auto neon-text">無料プレイ可能なマルチプレイヤーサバイバルゲーム</p>
+            <h1 class="text-4xl md:text-7xl font-bold mb-6 text-cyan-300 cyber-glitch hero-title float">
+                <span class="block">世界の終末を</span>
+                <span class="block">生き延びろ</span>
+            </h1>
+            <p class="text-lg md:text-2xl mb-8 max-w-3xl mx-auto neon-text hero-subtitle flicker">無料プレイ可能なマルチプレイヤーサバイバルゲーム</p>
             <div class="hero-buttons flex flex-col sm:flex-row justify-center gap-4 max-w-md mx-auto">
-                <a href="#about" class="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 px-6 py-3 rounded-md text-lg font-medium transition shadow-lg shadow-cyan-500/20">詳細を見る</a>
-                <a href="https://store.steampowered.com/app/304930/Unturned/" target="_blank" class="bg-gray-800 hover:bg-gray-700 px-6 py-3 rounded-md text-lg font-medium transition flex items-center justify-center neon-border">
+                <a href="#about" class="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 px-6 py-3 rounded-md text-lg font-medium transition shadow-lg shadow-cyan-500/20 glow-hover">
+                    詳細を見る
+                </a>
+                <a href="https://store.steampowered.com/app/304930/Unturned/" target="_blank" class="bg-gray-800 hover:bg-gray-700 px-6 py-3 rounded-md text-lg font-medium transition flex items-center justify-center neon-border glow-hover">
                     <i class="fab fa-steam mr-2"></i> 無料ダウンロード
                 </a>
             </div>
         </div>
         <div class="absolute bottom-10 left-0 right-0 text-center">
             <a href="#about" class="text-gray-300 hover:text-cyan-300 animate-bounce inline-block">
-                <i class="fas fa-chevron-down text-3xl"></i>
+                <i class="fas fa-chevron-down text-3xl pulse"></i>
             </a>
         </div>
     </header>
 
     <!-- ゲーム概要セクション -->
-    <section id="about" class="py-20 bg-gray-900 pixel-grid">
+    <section id="about" class="py-20 bg-gray-900 pixel-grid section-padding matrix-bg">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-cyan-300 cyber-glitch">UNTURNEDとは</h2>
-                <div class="w-20 h-1 bg-gradient-to-r from-cyan-500 to-blue-600 mx-auto mb-6"></div>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-cyan-300 cyber-glitch flicker">UNTURNEDとは</h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-cyan-500 to-blue-600 mx-auto mb-6 glow-hover"></div>
                 <p class="max-w-3xl mx-auto text-lg">Nelson Sextonによって開発されたUnturnedは、ブロックスタイルのグラフィックスとサバイバルメカニクスを組み合わせたユニークなゾンビサバイバルゲームです。</p>
             </div>
             <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-gray-800 p-6 rounded-lg shadow-lg neon-border">
-                    <div class="text-cyan-300 text-4xl mb-4">
+                <div class="bg-gray-800 p-6 rounded-lg shadow-lg neon-border game-card glow-hover">
+                    <div class="text-cyan-300 text-4xl mb-4 rotate">
                         <i class="fas fa-calendar-alt"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-2">ロングセラー</h3>
                     <p class="text-gray-300">2014年にリリースされ、無料プレイモデルを維持ながら継続的にアップデートが行われています。</p>
                 </div>
-                <div class="bg-gray-800 p-6 rounded-lg shadow-lg neon-border">
-                    <div class="text-cyan-300 text-4xl mb-4">
+                <div class="bg-gray-800 p-6 rounded-lg shadow-lg neon-border game-card glow-hover">
+                    <div class="text-cyan-300 text-4xl mb-4 pulse">
                         <i class="fas fa-users"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-2">人気</h3>
                     <p class="text-gray-300">Steamで4000万以上のダウンロードを記録し、最も人気のあるサバイバルゲームの1つです。</p>
                 </div>
-                <div class="bg-gray-800 p-6 rounded-lg shadow-lg neon-border">
-                    <div class="text-cyan-300 text-4xl mb-4">
+                <div class="bg-gray-800 p-6 rounded-lg shadow-lg neon-border game-card glow-hover">
+                    <div class="text-cyan-300 text-4xl mb-4 float">
                         <i class="fas fa-gamepad"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-2">様々なゲーム体験</h3>
@@ -211,32 +380,32 @@
             
             <!-- ゲーム画像ギャラリー -->
             <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="game-card">
-                    <img src="https://www.4gamer.net/games/785/G078523/20240321066/SS/008.jpg" alt="Unturned gameplay" class="rounded-lg w-full h-64 object-cover">
+                <div class="game-card pixel-corners">
+                    <img src="https://www.4gamer.net/games/785/G078523/20240321066/SS/008.jpg" alt="Unturned gameplay" class="rounded-lg w-full h-64 object-cover glow-hover">
                 </div>
-                <div class="game-card">
-                    <img src="https://www.gamespark.jp/imgs/p/vfrvPUfFBDEEkDjVvIkR5MMLlgcGBQQDAgEA/618819.jpg" alt="Unturned gameplay" class="rounded-lg w-full h-64 object-cover">
+                <div class="game-card pixel-corners">
+                    <img src="https://www.gamespark.jp/imgs/p/vfrvPUfFBDEEkDjVvIkR5MMLlgcGBQQDAgEA/618819.jpg" alt="Unturned gameplay" class="rounded-lg w-full h-64 object-cover glow-hover">
                 </div>
-                <div class="game-card">
-                    <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/304930/ss_f634649eb2a50b49bc98f7cc27314b671c8cbff5.1920x1080.jpg?t=1734630748" alt="Unturned gameplay" class="rounded-lg w-full h-64 object-cover">
+                <div class="game-card pixel-corners">
+                    <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/304930/ss_f634649eb2a50b49bc98f7cc27314b671c8cbff5.1920x1080.jpg?t=1734630748" alt="Unturned gameplay" class="rounded-lg w-full h-64 object-cover glow-hover">
                 </div>
             </div>
         </div>
     </section>
 
     <!-- 特徴セクション -->
-    <section id="features" class="py-20 bg-gray-900 relative overflow-hidden">
+    <section id="features" class="py-20 bg-gray-900 relative overflow-hidden section-padding scanline">
         <div class="absolute inset-0 bg-[url('https://i.imgur.com/X3ZQZ2f.png')] opacity-5 mix-blend-overlay"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-cyan-300 cyber-glitch">主な特徴</h2>
-                <div class="w-20 h-1 bg-gradient-to-r from-cyan-500 to-blue-600 mx-auto mb-6"></div>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-cyan-300 cyber-glitch flicker">主な特徴</h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-cyan-500 to-blue-600 mx-auto mb-6 glow-hover"></div>
             </div>
             <div class="grid md:grid-cols-2 gap-10 items-center">
                 <div>
-                    <div class="mb-8">
+                    <div class="mb-8 glow-hover">
                         <div class="flex items-start mb-2">
-                            <div class="text-cyan-300 mr-4 mt-1">
+                            <div class="text-cyan-300 mr-4 mt-1 pulse">
                                 <i class="fas fa-check-circle text-xl"></i>
                             </div>
                             <div>
@@ -245,9 +414,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="mb-8">
+                    <div class="mb-8 glow-hover">
                         <div class="flex items-start mb-2">
-                            <div class="text-cyan-300 mr-4 mt-1">
+                            <div class="text-cyan-300 mr-4 mt-1 pulse">
                                 <i class="fas fa-check-circle text-xl"></i>
                             </div>
                             <div>
@@ -256,9 +425,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="mb-8">
+                    <div class="mb-8 glow-hover">
                         <div class="flex items-start mb-2">
-                            <div class="text-cyan-300 mr-4 mt-1">
+                            <div class="text-cyan-300 mr-4 mt-1 pulse">
                                 <i class="fas fa-check-circle text-xl"></i>
                             </div>
                             <div>
@@ -269,8 +438,8 @@
                     </div>
                 </div>
                 <div class="relative">
-                    <img src="https://stat.ameba.jp/user_images/20170721/13/bonchobi000/a3/cb/j/o1920108013987243077.jpg" alt="Unturned gameplay" class="rounded-lg shadow-xl w-full neon-border">
-                    <div class="absolute -bottom-5 -right-5 bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-4 py-2 rounded-lg shadow-lg">
+                    <img src="https://stat.ameba.jp/user_images/20170721/13/bonchobi000/a3/cb/j/o1920108013987243077.jpg" alt="Unturned gameplay" class="rounded-lg shadow-xl w-full neon-border glow-hover float">
+                    <div class="absolute -bottom-5 -right-5 bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-4 py-2 rounded-lg shadow-lg pulse">
                         <i class="fas fa-play mr-2"></i> アクティブな開発
                     </div>
                 </div>
@@ -279,76 +448,76 @@
     </section>
 
     <!-- マルチプレイセクション -->
-    <section id="multiplayer" class="py-20 bg-gray-900 pixel-grid">
+    <section id="multiplayer" class="py-20 bg-gray-900 pixel-grid section-padding matrix-bg">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-cyan-300 cyber-glitch">マルチプレイの魅力</h2>
-                <div class="w-20 h-1 bg-gradient-to-r from-cyan-500 to-blue-600 mx-auto mb-6"></div>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-cyan-300 cyber-glitch flicker">マルチプレイの魅力</h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-cyan-500 to-blue-600 mx-auto mb-6 glow-hover"></div>
                 <p class="max-w-3xl mx-auto text-lg">友達と協力したり、敵対したり、UNTURNEDのマルチプレイは無限の可能性を提供します。</p>
             </div>
             
-            <div class="multiplayer-highlight p-8 rounded-lg mb-12">
+            <div class="multiplayer-highlight p-8 rounded-lg mb-12 glow-hover">
                 <div class="flex flex-col md:flex-row items-center gap-8">
                     <div class="flex-1">
-                        <h3 class="text-2xl font-bold mb-4 text-cyan-300">協力プレイでより深い体験を</h3>
+                        <h3 class="text-2xl font-bold mb-4 text-cyan-300 flicker">協力プレイでより深い体験を</h3>
                         <p class="text-gray-300 mb-4">UNTURNEDの真の魅力は、最大24人までのプレイヤーと共に遊べるマルチプレイモードにあります。友達とチームを組んで巨大な基地を建設したり、危険なダンジョンに挑戦したり、ゾンビの群れから生き延びる協力プレイが楽しめます。</p>
                         <ul class="space-y-3">
                             <li class="flex items-start">
-                                <i class="fas fa-users text-cyan-300 mt-1 mr-3"></i>
+                                <i class="fas fa-users text-cyan-300 mt-1 mr-3 pulse"></i>
                                 <span>最大24人同時プレイ可能なサーバー</span>
                             </li>
                             <li class="flex items-start">
-                                <i class="fas fa-shield-alt text-cyan-300 mt-1 mr-3"></i>
+                                <i class="fas fa-shield-alt text-cyan-300 mt-1 mr-3 pulse"></i>
                                 <span>チームプレイに最適なクランシステム</span>
                             </li>
                             <li class="flex items-start">
-                                <i class="fas fa-comments text-cyan-300 mt-1 mr-3"></i>
+                                <i class="fas fa-comments text-cyan-300 mt-1 mr-3 pulse"></i>
                                 <span>ボイスチャットとテキストチャットの両方をサポート</span>
                             </li>
                         </ul>
                     </div>
                     <div class="flex-1">
-                        <img src="https://img.gamewith.jp/gamedb/gameimages/11278/39dc0e2a74ebc5b074ed21b79fac0ba9.png" alt="マルチプレイ" class="rounded-lg shadow-xl w-full neon-border">
+                        <img src="https://img.gamewith.jp/gamedb/gameimages/11278/39dc0e2a74ebc5b074ed21b79fac0ba9.png" alt="マルチプレイ" class="rounded-lg shadow-xl w-full neon-border glow-hover">
                     </div>
                 </div>
             </div>
             
             <div class="grid md:grid-cols-2 gap-8">
-                <div class="bg-gray-800 p-6 rounded-lg shadow-lg neon-border">
+                <div class="bg-gray-800 p-6 rounded-lg shadow-lg neon-border glow-hover">
                     <div class="flex items-center mb-4">
-                        <div class="bg-cyan-500 p-3 rounded-full mr-4">
+                        <div class="bg-cyan-500 p-3 rounded-full mr-4 rotate">
                             <i class="fas fa-user-friends text-white text-xl"></i>
                         </div>
                         <h3 class="text-xl font-bold">協力サバイバル</h3>
                     </div>
                     <p class="text-gray-300 mb-4">友達と協力して資源を集め、基地を建設し、ゾンビの脅威から身を守りましょう。役割分担が成功の鍵です。</p>
                     <div class="flex flex-wrap gap-2">
-                        <span class="bg-gray-700 px-3 py-1 rounded-full text-sm">資源収集</span>
-                        <span class="bg-gray-700 px-3 py-1 rounded-full text-sm">基地防衛</span>
-                        <span class="bg-gray-700 px-3 py-1 rounded-full text-sm">役割分担</span>
+                        <span class="bg-gray-700 px-3 py-1 rounded-full text-sm glow-hover">資源収集</span>
+                        <span class="bg-gray-700 px-3 py-1 rounded-full text-sm glow-hover">基地防衛</span>
+                        <span class="bg-gray-700 px-3 py-1 rounded-full text-sm glow-hover">役割分担</span>
                     </div>
                 </div>
                 
-                <div class="bg-gray-800 p-6 rounded-lg shadow-lg neon-border">
+                <div class="bg-gray-800 p-6 rounded-lg shadow-lg neon-border glow-hover">
                     <div class="flex items-center mb-4">
-                        <div class="bg-red-500 p-3 rounded-full mr-4">
+                        <div class="bg-red-500 p-3 rounded-full mr-4 pulse">
                             <i class="fas fa-crosshairs text-white text-xl"></i>
                         </div>
                         <h3 class="text-xl font-bold">PvPバトル</h3>
                     </div>
                     <p class="text-gray-300 mb-4">他のプレイヤーと戦い、彼らの資源を奪い取りましょう。戦略とチームワークが勝利をもたらします。</p>
                     <div class="flex flex-wrap gap-2">
-                        <span class="bg-gray-700 px-3 py-1 rounded-full text-sm">戦術</span>
-                        <span class="bg-gray-700 px-3 py-1 rounded-full text-sm">襲撃</span>
-                        <span class="bg-gray-700 px-3 py-1 rounded-full text-sm">戦利品</span>
+                        <span class="bg-gray-700 px-3 py-1 rounded-full text-sm glow-hover">戦術</span>
+                        <span class="bg-gray-700 px-3 py-1 rounded-full text-sm glow-hover">襲撃</span>
+                        <span class="bg-gray-700 px-3 py-1 rounded-full text-sm glow-hover">戦利品</span>
                     </div>
                 </div>
             </div>
             
             <div class="mt-12 text-center">
-                <h3 class="text-2xl font-bold mb-4 text-cyan-300">カスタムサーバーで独自のルールを</h3>
+                <h3 class="text-2xl font-bold mb-4 text-cyan-300 flicker">カスタムサーバーで独自のルールを</h3>
                 <p class="text-gray-300 max-w-3xl mx-auto mb-6">UNTURNEDでは自分でサーバーを立てて独自のルールを設定できます。PvE専用サーバー、ハードコアサバイバル、ロールプレイサーバーなど、様々なスタイルのゲームプレイが可能です。</p>
-                <a href="https://store.steampowered.com/app/304930/Unturned/" target="_blank" class="inline-block bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 px-6 py-3 rounded-md text-lg font-medium transition shadow-lg shadow-cyan-500/20">
+                <a href="https://store.steampowered.com/app/304930/Unturned/" target="_blank" class="inline-block bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 px-6 py-3 rounded-md text-lg font-medium transition shadow-lg shadow-cyan-500/20 glow-hover pulse">
                     <i class="fas fa-server mr-2"></i> サーバーを立てる方法を見る
                 </a>
             </div>
@@ -356,42 +525,42 @@
     </section>
 
     <!-- ゲームプレイセクション -->
-    <section id="gameplay" class="py-20 bg-gray-900 pixel-grid">
+    <section id="gameplay" class="py-20 bg-gray-900 pixel-grid section-padding scanline">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-cyan-300 cyber-glitch">ゲームプレイの特徴</h2>
-                <div class="w-20 h-1 bg-gradient-to-r from-cyan-500 to-blue-600 mx-auto mb-6"></div>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-cyan-300 cyber-glitch flicker">ゲームプレイの特徴</h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-cyan-500 to-blue-600 mx-auto mb-6 glow-hover"></div>
                 <p class="max-w-3xl mx-auto text-lg">プレイスタイルに合わせた様々なゲーム体験を提供します。</p>
             </div>
             <div class="grid md:grid-cols-3 gap-8">
-                <div class="game-card bg-gray-800 p-6 rounded-lg shadow-lg transition duration-300 neon-border">
+                <div class="game-card bg-gray-800 p-6 rounded-lg shadow-lg transition duration-300 neon-border glow-hover">
                     <img src="https://i.blogs.es/e26149/unt1/1366_2000.jpg" alt="サバイバル" class="rounded-md mb-4 w-full h-48 object-cover">
                     <h3 class="text-xl font-bold mb-2">サバイバル</h3>
                     <p class="text-gray-300 mb-4">ゾンビ、野生動物、環境の危険に対抗しながらキャラクターのニーズを管理します。</p>
                     <div class="flex flex-wrap gap-2">
-                        <span class="bg-gray-700 px-3 py-1 rounded-full text-sm">空腹</span>
-                        <span class="bg-gray-700 px-3 py-1 rounded-full text-sm">喉の渇き</span>
-                        <span class="bg-gray-700 px-3 py-1 rounded-full text-sm">病気</span>
+                        <span class="bg-gray-700 px-3 py-1 rounded-full text-sm glow-hover">空腹</span>
+                        <span class="bg-gray-700 px-3 py-1 rounded-full text-sm glow-hover">喉の渇き</span>
+                        <span class="bg-gray-700 px-3 py-1 rounded-full text-sm glow-hover">病気</span>
                     </div>
                 </div>
-                <div class="game-card bg-gray-800 p-6 rounded-lg shadow-lg transition duration-300 neon-border">
+                <div class="game-card bg-gray-800 p-6 rounded-lg shadow-lg transition duration-300 neon-border glow-hover">
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmkeQcS4bcO3xUE68PO5URJRdpICMBSimRAQ&s" alt="建築" class="rounded-md mb-4 w-full h-48 object-cover">
                     <h3 class="text-xl font-bold mb-2">基地建設</h3>
                     <p class="text-gray-300 mb-4">精巧な基地、防御施設、罠を作成して脅威から身を守ります。</p>
                     <div class="flex flex-wrap gap-2">
-                        <span class="bg-gray-700 px-3 py-1 rounded-full text-sm">クラフト</span>
-                        <span class="bg-gray-700 px-3 py-1 rounded-full text-sm">防御</span>
-                        <span class="bg-gray-700 px-3 py-1 rounded-full text-sm">貯蔵</span>
+                        <span class="bg-gray-700 px-3 py-1 rounded-full text-sm glow-hover">クラフト</span>
+                        <span class="bg-gray-700 px-3 py-1 rounded-full text-sm glow-hover">防御</span>
+                        <span class="bg-gray-700 px-3 py-1 rounded-full text-sm glow-hover">貯蔵</span>
                     </div>
                 </div>
-                <div class="game-card bg-gray-800 p-6 rounded-lg shadow-lg transition duration-300 neon-border">
+                <div class="game-card bg-gray-800 p-6 rounded-lg shadow-lg transition duration-300 neon-border glow-hover">
                     <img src="https://howtounturned.weebly.com/uploads/5/9/9/8/59981697/6745128.png?362" alt="PvP" class="rounded-md mb-4 w-full h-48 object-cover">
                     <h3 class="text-xl font-bold mb-2">プレイヤー対戦</h3>
                     <p class="text-gray-300 mb-4">指定されたPvPゾーンやサーバーで他のサバイバーと激しい戦闘を行います。</p>
                     <div class="flex flex-wrap gap-2">
-                        <span class="bg-gray-700 px-3 py-1 rounded-full text-sm">戦術</span>
-                        <span class="bg-gray-700 px-3 py-1 rounded-full text-sm">武器</span>
-                        <span class="bg-gray-700 px-3 py-1 rounded-full text-sm">戦略</span>
+                        <span class="bg-gray-700 px-3 py-1 rounded-full text-sm glow-hover">戦術</span>
+                        <span class="bg-gray-700 px-3 py-1 rounded-full text-sm glow-hover">武器</span>
+                        <span class="bg-gray-700 px-3 py-1 rounded-full text-sm glow-hover">戦略</span>
                     </div>
                 </div>
             </div>
@@ -399,42 +568,42 @@
     </section>
 
     <!-- コミュニティセクション -->
-    <section id="community" class="py-20 bg-gray-900 relative overflow-hidden">
+    <section id="community" class="py-20 bg-gray-900 relative overflow-hidden section-padding matrix-bg">
         <div class="absolute inset-0 bg-[url('https://i.imgur.com/X3ZQZ2f.png')] opacity-5 mix-blend-overlay"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-cyan-300 cyber-glitch">活発なコミュニティ</h2>
-                <div class="w-20 h-1 bg-gradient-to-r from-cyan-500 to-blue-600 mx-auto mb-6"></div>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-cyan-300 cyber-glitch flicker">活発なコミュニティ</h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-cyan-500 to-blue-600 mx-auto mb-6 glow-hover"></div>
                 <p class="max-w-3xl mx-auto text-lg">世界中のプレイヤーとつながり、UNTURNEDの体験を共有しましょう。</p>
             </div>
             <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-gray-800 p-6 rounded-lg shadow-lg neon-border">
-                    <div class="text-cyan-300 text-4xl mb-4">
+                <div class="bg-gray-800 p-6 rounded-lg shadow-lg neon-border glow-hover">
+                    <div class="text-cyan-300 text-4xl mb-4 float">
                         <i class="fab fa-discord"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-2">Discordコミュニティ</h3>
                     <p class="text-gray-300 mb-4">公式Discordサーバーで最新情報を入手し、他のプレイヤーと交流しましょう。</p>
-                    <a href="#" class="text-cyan-300 hover:text-cyan-200 font-medium inline-flex items-center">
+                    <a href="#" class="text-cyan-300 hover:text-cyan-200 font-medium inline-flex items-center pulse">
                         参加する <i class="fas fa-arrow-right ml-2"></i>
                     </a>
                 </div>
-                <div class="bg-gray-800 p-6 rounded-lg shadow-lg neon-border">
-                    <div class="text-cyan-300 text-4xl mb-4">
+                <div class="bg-gray-800 p-6 rounded-lg shadow-lg neon-border glow-hover">
+                    <div class="text-cyan-300 text-4xl mb-4 rotate">
                         <i class="fab fa-reddit"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-2">Redditコミュニティ</h3>
                     <p class="text-gray-300 mb-4">活発なRedditコミュニティでヒントやストーリーを共有しましょう。</p>
-                    <a href="#" class="text-cyan-300 hover:text-cyan-200 font-medium inline-flex items-center">
+                    <a href="#" class="text-cyan-300 hover:text-cyan-200 font-medium inline-flex items-center pulse">
                         参加する <i class="fas fa-arrow-right ml-2"></i>
                     </a>
                 </div>
-                <div class="bg-gray-800 p-6 rounded-lg shadow-lg neon-border">
-                    <div class="text-cyan-300 text-4xl mb-4">
+                <div class="bg-gray-800 p-6 rounded-lg shadow-lg neon-border glow-hover">
+                    <div class="text-cyan-300 text-4xl mb-4 pulse">
                         <i class="fab fa-steam"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-2">Steamコミュニティ</h3>
                     <p class="text-gray-300 mb-4">Steamのディスカッションフォーラムで質問したり、MODを探したりしましょう。</p>
-                    <a href="#" class="text-cyan-300 hover:text-cyan-200 font-medium inline-flex items-center">
+                    <a href="#" class="text-cyan-300 hover:text-cyan-200 font-medium inline-flex items-center pulse">
                         参加する <i class="fas fa-arrow-right ml-2"></i>
                     </a>
                 </div>
@@ -443,34 +612,34 @@
     </section>
 
     <!-- フッター -->
-    <footer class="bg-gray-900 border-t border-gray-800 py-12">
+    <footer class="bg-gray-900 border-t border-gray-800 py-12 scanline">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <div>
-                    <h3 class="text-lg font-bold text-cyan-300 mb-4"><i class="fas fa-skull mr-2"></i>UNTURNED</h3>
+                    <h3 class="text-lg font-bold text-cyan-300 mb-4 flicker"><i class="fas fa-skull mr-2"></i>UNTURNED</h3>
                     <p class="text-gray-400">無費プレイ可能なマルチプレイヤーサバイバルゲーム</p>
                 </div>
                 <div>
                     <h3 class="text-lg font-bold mb-4">リンク</h3>
                     <ul class="space-y-2">
-                        <li><a href="#about" class="text-gray-400 hover:text-cyan-300 transition">ゲーム概要</a></li>
-                        <li><a href="#features" class="text-gray-400 hover:text-cyan-300 transition">特徴</a></li>
-                        <li><a href="#multiplayer" class="text-gray-400 hover:text-cyan-300 transition">マルチプレイ</a></li>
-                        <li><a href="#gameplay" class="text-gray-400 hover:text-cyan-300 transition">ゲームプレイ</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-cyan-300 transition glow-hover">ゲーム概要</a></li>
+                        <li><a href="#features" class="text-gray-400 hover:text-cyan-300 transition glow-hover">特徴</a></li>
+                        <li><a href="#multiplayer" class="text-gray-400 hover:text-cyan-300 transition glow-hover">マルチプレイ</a></li>
+                        <li><a href="#gameplay" class="text-gray-400 hover:text-cyan-300 transition glow-hover">ゲームプレイ</a></li>
                     </ul>
                 </div>
                 <div>
                     <h3 class="text-lg font-bold mb-4">コミュニティ</h3>
                     <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-400 hover:text-cyan-300 transition">Discord</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-cyan-300 transition">Reddit</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-cyan-300 transition">Steam</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-cyan-300 transition">Twitter</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-cyan-300 transition glow-hover">Discord</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-cyan-300 transition glow-hover">Reddit</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-cyan-300 transition glow-hover">Steam</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-cyan-300 transition glow-hover">Twitter</a></li>
                     </ul>
                 </div>
                 <div>
                     <h3 class="text-lg font-bold mb-4">ダウンロード</h3>
-                    <a href="https://store.steampowered.com/app/304930/Unturned/" target="_blank" class="inline-block bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 px-4 py-2 rounded-md text-sm font-medium transition shadow-lg shadow-cyan-500/20">
+                    <a href="https://store.steampowered.com/app/304930/Unturned/" target="_blank" class="inline-block bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 px-4 py-2 rounded-md text-sm font-medium transition shadow-lg shadow-cyan-500/20 glow-hover pulse">
                         <i class="fab fa-steam mr-2"></i> Steamでプレイ
                     </a>
                 </div>
@@ -478,21 +647,70 @@
             <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
                 <p class="text-gray-500 text-sm">© 2024 Unturned. All rights reserved.</p>
                 <div class="flex space-x-6 mt-4 md:mt-0">
-                    <a href="#" class="text-gray-400 hover:text-cyan-300 transition">
+                    <a href="#" class="text-gray-400 hover:text-cyan-300 transition glow-hover">
                         <i class="fab fa-twitter text-xl"></i>
                     </a>
-                    <a href="#" class="text-gray-400 hover:text-cyan-300 transition">
+                    <a href="#" class="text-gray-400 hover:text-cyan-300 transition glow-hover">
                         <i class="fab fa-facebook text-xl"></i>
                     </a>
-                    <a href="#" class="text-gray-400 hover:text-cyan-300 transition">
+                    <a href="#" class="text-gray-400 hover:text-cyan-300 transition glow-hover">
                         <i class="fab fa-instagram text-xl"></i>
                     </a>
-                    <a href="#" class="text-gray-400 hover:text-cyan-300 transition">
+                    <a href="#" class="text-gray-400 hover:text-cyan-300 transition glow-hover">
                         <i class="fab fa-youtube text-xl"></i>
                     </a>
                 </div>
             </div>
         </div>
     </footer>
-<p style="border-radius: 8px; text-align: center; font-size: 12px; color: #fff; margin-top: 16px;position: fixed; left: 8px; bottom: 8px; z-index: 10; background: rgba(0, 0, 0, 0.8); padding: 4px 8px;">Made with <img src="https://enzostvs-deepsite.hf.space/logo.svg" alt="DeepSite Logo" style="width: 16px; height: 16px; vertical-align: middle;display:inline-block;margin-right:3px;filter:brightness(0) invert(1);"><a href="https://enzostvs-deepsite.hf.space" style="color: #fff;text-decoration: underline;" target="_blank" >DeepSite</a> - 🧬 <a href="https://enzostvs-deepsite.hf.space?remix=sassa12345/unturnedsite" style="color: #fff;text-decoration: underline;" target="_blank" >Remix</a></p></body>
+
+    <!-- 追加スクリプト -->
+    <script>
+        // スクロール時のアニメーション
+        document.addEventListener('DOMContentLoaded', function() {
+            // ヘッダータイトルのアニメーション
+            const heroTitle = document.querySelector('.hero-title');
+            if (heroTitle) {
+                setTimeout(() => {
+                    heroTitle.classList.add('typewriter');
+                }, 500);
+            }
+            
+            // スクロール時の要素表示アニメーション
+            const animateOnScroll = function() {
+                const elements = document.querySelectorAll('.game-card, .neon-border, .glow-hover');
+                
+                elements.forEach(element => {
+                    const elementPosition = element.getBoundingClientRect().top;
+                    const screenPosition = window.innerHeight / 1.3;
+                    
+                    if (elementPosition < screenPosition) {
+                        element.classList.add('animate__animated', 'animate__fadeInUp');
+                    }
+                });
+            };
+            
+            window.addEventListener('scroll', animateOnScroll);
+            animateOnScroll(); // 初期表示時にも実行
+            
+            // 背景パーティクル (簡易版)
+            const createParticle = function() {
+                const particle = document.createElement('div');
+                particle.className = 'zombie-hand';
+                particle.style.left = Math.random() * 100 + 'vw';
+                particle.style.top = Math.random() * 100 + 'vh';
+                particle.style.animationDelay = Math.random() * 15 + 's';
+                document.body.appendChild(particle);
+                
+                // アニメーション終了後に削除
+                setTimeout(() => {
+                    particle.remove();
+                }, 15000);
+            };
+            
+            // 定期的にパーティクルを生成
+            setInterval(createParticle, 3000);
+        });
+    </script>
+</body>
 </html>
